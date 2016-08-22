@@ -10,7 +10,16 @@
 </head>
 
 <body>
-    <div ng-controller="mainController"> {{title}} </div>
+    <div ng-controller="mainController"> {{title}}
+        <form name="cardsearchform" novalidate>
+            <input type="text" ng-model="search" name="cardname" placeholder="Enter card name here" required>
+            <button ng-click="getCardInfo(search); search = ''" type="submit" value="Enter" ng-disabled="cardsearchform.$invalid">
+                Submit
+            </button>
+        </form>
+        <br/> CARD INFO:
+        <br/> {{cardInfo}}
+    </div>
 
 </body>
 
