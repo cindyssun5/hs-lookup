@@ -27,10 +27,6 @@ angular.module("hs", ['ngRoute'])
 
   $scope.toggle = true;
 
-  $scope.$watch('toggle', function(){
-      $scope.toggleText = $scope.toggle ? 'Regular Card' : 'Gold Card';
-  });
-
   $scope.cardsInfo = {};
 
   $scope.getCardInfo = function(name) {
@@ -49,14 +45,6 @@ angular.module("hs", ['ngRoute'])
   $scope.cardsInfo = {};
 
   $scope.toggle = true;
-
-  // $scope.$watch('toggle', function(){
-  //     if($scope.toggle){
-  //       $scope.toggleText = 'Regular Card';
-  //     } else {
-  //       $scope.toggleText = 'Gold Card';
-  //     }
-  // });
 
   $scope.currentPage = 0;
   $scope.pageSize = 5;
@@ -100,7 +88,6 @@ angular.module("hs", ['ngRoute'])
         url: 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/search/' + name
       })
       .then(function(resp) {
-        console.log('Success GET/ at https://omgvamp-hearthstone-v1.p.mashape.com/cards/search/' + name);
         return resp.data;
       });
   };
