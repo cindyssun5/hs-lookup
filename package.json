@@ -4,7 +4,8 @@
     "main": "hslookup.js",
     "repository": "",
     "engines": {
-        "node": "4.4.7"
+        "node": "4.4.7",
+        "npm": "3.10.6"
     },
     "scripts": {
         "start": "node hslookup.js"
