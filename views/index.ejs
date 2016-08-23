@@ -1,5 +1,6 @@
 <!doctype html>
 <html ng-app="hs">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="/bower_components/angular/angular.js"></script>
 <script src="/bower_components/angular-route/angular-route.js"></script>
 <script src="/client/app.js"></script>
@@ -11,11 +12,18 @@
 </head>
 
 <body>
-    <div ng-controller="mainController"> {{title}}</div>
-    <a href="#/cardsearch"> Search by Card Name </a>
-    <a href="#/othersearch"> Search Others </a>
-    <div ng-view></div>
-
+    <center>
+        <div><img src="https://upload.wikimedia.org/wikipedia/en/1/1c/Hearthstone_Logo.png">
+            <br/>
+            <img src="/client/lookup.png" width="150px"> </div>
+        <br/>
+        <br/>
+        <a class="btn btn-default" href="#/cardsearch" role="button"> Search by Card Name</a>
+        <a class="btn btn-default" href="#/othersearch" role="button"> Search by Other</a>
+        <br/>
+        <br/>
+        <div ng-view></div>
+    </center>
 </body>
 
 </html>

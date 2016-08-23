@@ -1,12 +1,53 @@
 <form name="cardsearchform" novalidate>
-    <input type="text" ng-model="search" name="cardname" placeholder="Enter card name here" required>
-    <button ng-click="getCardInfo(search); search = ''" type="submit" value="Enter" ng-disabled="cardsearchform.$invalid">
-        Submit POPOPOPO
+    <table>
+        <col width="300">
+        <col width="10">
+        <col width="300">
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label for="cardclass">Class (Required)</label>
+                    <input type="text" class="form-control" id="cardclass" ng-model="cardclass" placeholder="Enter class here" required>
+                </div>
+            </td>
+            <td>
+            </td>
+            <td>
+                <div class="form-group">
+                    <label for="cardcost">Cost</label>
+                    <input type="text" class="form-control" id="cardcost" ng-model="cardcost" placeholder="Enter card cost here">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label for="cardattack">Attack</label>
+                    <input type="text" class="form-control" id="cardattack" ng-model="cardattack" placeholder="Enter attack here">
+                </div>
+            </td>
+            <td></td>
+            <td>
+                <div class="form-group">
+                    <label for="cardhealth">Health</label>
+                    <input type="text" class="form-control" id="cardhealth" ng-model="cardhealth" placeholder="Enter health here">
+                </div>
+            </td>
+        </tr>
+    </table>
+    <button ng-click="getCardsByClass(cardclass, cardcost, cardattack, cardhealth);" type="submit" value="Enter" ng-disabled="cardsearchform.$invalid" class="btn btn-default"> Submit
     </button>
+
 </form>
-<br/> CARD INFO:
+<br/>
+<p class="bg-warning">
+    <br/><b>CARD INFO:</b>
+    <br/> &nbsp;
+</p>
 <div ng-repeat="card in cardsInfo">
-    <table border="1px">
+    <table class="table table-striped" width="1000px">
+        <col width="500">
+        <col width="500">
         <tr>
             <th colspan="2"><b>{{card.name}}</b></th>
         </tr>
@@ -35,5 +76,4 @@
             </td>
         </tr>
     </table>
-</div>
 </div>
