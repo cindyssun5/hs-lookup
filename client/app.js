@@ -1,9 +1,19 @@
-angular.module("hs", [])
+angular.module("hs", ['ngRoute'])
 
-.config(function($httpProvider) {
+.config(function($httpProvider, $routeProvider) {
   $httpProvider.defaults.headers.get = {
     'X-Mashape-Authorization': 'arTq6BLPQRmshAdHvIgnuloUhDTip1im2OqjsnQ0KISzmHOFJ2'
   };
+
+  $routeProvider
+    .when('/cardsearch', {
+      templateUrl: 'client/views/cardsearch.html',
+      controller: 'mainController'
+    })
+    .when('/othersearch', {
+      templateUrl: 'client/views/othersearch.html',
+      controller: 'mainController'
+    })
 })
 
 .controller("mainController", function($scope, CardDB) {
