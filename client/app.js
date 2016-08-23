@@ -7,14 +7,14 @@ angular.module("hs", [])
 })
 
 .controller("mainController", function($scope, CardDB) {
-  $scope.title = 'Hello World!';
+  $scope.title = 'Hearthstone Lookup';
 
-  $scope.cardInfo = {};
+  $scope.cardsInfo = {};
 
   $scope.getCardInfo = function(name) {
     CardDB.getCardsByName(name)
       .then(function(data) {
-        $scope.cardInfo = data;
+        $scope.cardsInfo = data;
       })
       .catch(function(err) {
         console.error(err);
