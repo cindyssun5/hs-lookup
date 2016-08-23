@@ -8,12 +8,14 @@
         "npm": "3.10.6"
     },
     "scripts": {
-        "start": "node hslookup.js"
+        "start": "node hslookup.js",
+        "postinstall": "./node_modules/bower/bin/bower install"
     },
     "dependencies": {
         "angular": "^1.5.8",
         "ejs": "^2.5.1",
-        "express": "^4.14.0"
+        "express": "^4.14.0",
+        "bower": "1.7.9"
     },
     "devdependencies": {}
 }

@@ -45,12 +45,23 @@
                 <b>Card Text:</b> {{card.text}}
                 <br/>
                 <br/>
-                <span ng-if="card.playerClass"><b>Player Class:</b>{{card.playerClass}}<br/>
+                <span ng-if="card.playerClass"><b>Player Class:</b> {{card.playerClass}}<br/>
                     <br/></span>
-                <span ng-if="card.flavor"><b>Flavor Text:</b>{{card.flavor}}</span>
+                <span ng-if="card.flavor"><b>Flavor Text:</b> {{card.flavor}}</span>
+                <br/>
+                <center>
+                    <button ng-click="toggle = !toggle" class="btn btn-default">{{ toggle == true ? 'See Gold Card' : 'See Regular Card' }}</button>
+                </center>
             </td>
             <td>
-                <img ng-src="{{card.img}}">
+                <div ng-switch="toggle">
+                    <div ng-switch-when="true">
+                        <img ng-src="{{card.img}}">
+                    </div>
+                    <div ng-switch-when="false">
+                        <img ng-src="{{card.imgGold}} ">
+                    </div>
+                </div>
             </td>
         </tr>
     </table>

@@ -25,6 +25,12 @@ angular.module("hs", ['ngRoute'])
 .controller("cardSearch", function($scope, CardDB) {
   $scope.title = 'Hearthstone Lookup';
 
+  $scope.toggle = true;
+
+  $scope.$watch('toggle', function(){
+      $scope.toggleText = $scope.toggle ? 'Regular Card' : 'Gold Card';
+  });
+
   $scope.cardsInfo = {};
 
   $scope.getCardInfo = function(name) {
@@ -41,6 +47,16 @@ angular.module("hs", ['ngRoute'])
 
 .controller("otherSearch", function($scope, CardDB) {
   $scope.cardsInfo = {};
+
+  $scope.toggle = true;
+
+  // $scope.$watch('toggle', function(){
+  //     if($scope.toggle){
+  //       $scope.toggleText = 'Regular Card';
+  //     } else {
+  //       $scope.toggleText = 'Gold Card';
+  //     }
+  // });
 
   $scope.currentPage = 0;
   $scope.pageSize = 5;
@@ -91,9 +107,7 @@ angular.module("hs", ['ngRoute'])
 
   var getCardsByClass = function(cardclass, cost, attack, health) {
     var suffix = '';
-    console.log(attack, "attack");
-    console.log(health, "health");
-    console.log(cost, "cost");
+
     cardCap = cardclass.charAt(0).toUpperCase() + cardclass.slice(1);
     if (cost) {
       suffix = suffix.concat('cost=', cost, '&');
