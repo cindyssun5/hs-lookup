@@ -1,0 +1,12 @@
+{
+  "name": "hs-lookup",
+  "version": "0.0.2",
+  "main": "hslookup.js",
+  "repository": "",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "ejs": "^2.5.1",
+    "express": "^4.14.0"
+  },
+  "devdependencies": {}
+}

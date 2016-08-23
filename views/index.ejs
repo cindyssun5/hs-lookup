@@ -1,7 +1,7 @@
 <!doctype html>
 <html ng-app="hs">
-<script src="bower_components/angular/angular.js"></script>
-<script src="client/app.js"></script>
+<script src="/node_modules/angular/angular.js"></script>
+<script src="/client/app.js"></script>
 
 <head>
     <title>
@@ -28,7 +28,7 @@
                         <b>Card Type:</b> {{card.type}}
                         <br/>
                         <br/>
-                        <span ng-if="{{card.rarity}}"><b>Card Rarity:</b>{{card.rarity}}<br/>
+                        <span ng-if="card.rarity"><b>Card Rarity:</b>{{card.rarity}}<br/>
                         <br/></span>
                         <b>Card Cost:</b> {{card.cost}} Mana
                         <br/>
@@ -39,9 +39,9 @@
                         <b>Card Text:</b> {{card.text}}
                         <br/>
                         <br/>
-                        <span ng-if="{{card.playerClass}}"><b>Player Class:</b>{{card.playerClass}}<br/>
+                        <span ng-if="card.playerClass"><b>Player Class:</b>{{card.playerClass}}<br/>
                         <br/></span>
-                        <span ng-if="{{card.flavor}"><b>Flavor Text:</b>{{card.flavor}}</span>
+                        <span ng-if="card.flavor"><b>Flavor Text:</b>{{card.flavor}}</span>
                     </td>
                     <td>
                         <img ng-src="{{card.img}}">
