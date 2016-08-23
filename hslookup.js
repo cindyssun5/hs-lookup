@@ -5,6 +5,7 @@ app.set('view engine', 'ejs');
 app.set('port', (process.env.PORT) || 4568);
 app.use(express.static(__dirname));
 
+
 app.get('/', function(req, res) {
   res.render('index');
 });

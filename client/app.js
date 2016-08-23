@@ -41,16 +41,33 @@ angular.module("hs", ['ngRoute'])
 
 .controller("otherSearch", function($scope, CardDB) {
   $scope.cardsInfo = {};
-  // $scope.card = {
-  //   cost: "",
-  //   attack: "",
-  //   health: ""
-  // };
+
+  $scope.currentPage = 0;
+  $scope.pageSize = 5;
+
+  $scope.makeIntoArray = function(num) {
+    return new Array(num);
+  };
+
+  $scope.currentPage = function(currentPage) {
+    $scope.currentPage = currentPage;
+  };
+
+  $scope.totalPages = function() {
+    return Math.ceil($scope.cardsInfo.length / $scope.pageSize);
+  };
+
 
   $scope.getCardsByClass = function(classname, cost, attack, health) {
     CardDB.getCardsByClass(classname, cost, attack, health)
       .then(function(data) {
         $scope.cardsInfo = data;
+      })
+      .then(function() {
+        $scope.cardclass = "";
+        $scope.cardcost = "";
+        $scope.cardattack = "";
+        $scope.cardhealth = "";
       })
       .catch(function(err) {
         console.error(err);
@@ -74,17 +91,17 @@ angular.module("hs", ['ngRoute'])
 
   var getCardsByClass = function(cardclass, cost, attack, health) {
     var suffix = '';
-    console.log(cost);
+    console.log(attack, "attack");
+    console.log(health, "health");
+    console.log(cost, "cost");
     cardCap = cardclass.charAt(0).toUpperCase() + cardclass.slice(1);
-    if (cost !== undefined) {
-      console.log(cost, "#2#");
+    if (cost) {
       suffix = suffix.concat('cost=', cost, '&');
-      console.log(suffix);
     }
-    if (attack !== undefined) {
+    if (attack) {
       suffix = suffix.concat('attack=', attack, '&');
     }
-    if (health !== undefined) {
+    if (health) {
       suffix = suffix.concat('health=', health, '&');
     }
     return $http({
@@ -93,7 +110,7 @@ angular.module("hs", ['ngRoute'])
           suffix
       })
       .then(function(resp) {
-        console.log('Success GET/ at https://omgvamp-hearthstone-v1.p.mashape.com/cards/classes/' + cardclass + suffix)
+        console.log('Success GET/ at https://omgvamp-hearthstone-v1.p.mashape.com/cards/classes/' + cardclass + suffix);
         return resp.data;
       });
   };
