@@ -160,7 +160,7 @@ angular.module("hs", ['ngRoute'])
 
 .factory('Deck', function($http){
   var deckArray = [
-    'one', 'two', 'three'
+
   ];
 
   var addToDeck = function(name){

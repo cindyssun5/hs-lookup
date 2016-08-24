@@ -25,12 +25,11 @@ app.get('/', function(req, res) {
 
 app.post('/saveDeck', function(req, res){
   Deck.findOne({name: req.body.deckName}).exec(function(err,found){
-    console.log('enter findone')
     if(found){
-      console.log('found deck name')
+      console.log('found deck name');
       res.send(301, 'error');
     } else {
-      console.log('entered server side post')
+      console.log('entered server side post');
       var newDeck = new Deck({
        name: req.body.deckName,
        deckArray: req.body.deckArray
