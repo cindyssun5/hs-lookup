@@ -37,17 +37,28 @@
                 <table class="table table-striped" style="float: left">
                     <col width="200">
                     <th>
-                        Current Temp Deck
+                        <b><h4>Current Temp Deck</h4><b/>
                     </th>
-                    <tbody ng-repeat="name in deck track by $index">
-                        <tr>
-                            <td>
-                                {{name}}
-                            </td>
-                        </tr>
-                    </tbody>
+
+                    <tr ng-repeat="name in deck track by $index">
+                        <td>
+                            {{name}}
+                        </td>
+                    </tr>
+                    <tr>
+                      <td>
+                    <div class="form-group">
+                        <label for="deckName">Deck Name</label>
+                        <input type="text" class="form-control" id="deckName" ng-model="deckName" placeholder="Enter unique deck name here" required>
+                    </div>
+                    <button ng-click="saveDeckToDB(deckName)" class="btn btn-default">Save Deck</button>
+
+                </td>
+                </tr>
+                </th>
+
                 </table>
-            </th>
+
         </table>
     </center>
 </div>

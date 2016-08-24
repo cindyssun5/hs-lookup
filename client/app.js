@@ -95,9 +95,23 @@ angular.module("hs", ['ngRoute'])
 .controller("decks", function($scope, Deck){
 
   $scope.$watch('Deck.deckArray', function(){
-    console.log($scope.deck, "scope.deck")
     $scope.deck = Deck.deckArray;
   });
+
+  $scope.saveDeckToDB = function(name){
+    console.log("entered first saveDeckToDB function")
+    Deck.addToDB(name)
+      .then(function(resp){
+        if(resp.status === 302){
+          console.log("Tried to post but error");
+          $scope.resp = "Name already exists! Try again.";
+        } else {
+          Deck.deckArray = [];
+          console.log("Posted");
+          $scope.resp = resp.deckName + "Saved!";
+        }
+      });
+  };
 
 })
 
@@ -145,15 +159,38 @@ angular.module("hs", ['ngRoute'])
 })
 
 .factory('Deck', function($http){
-  var deckArray = [];
+  var deckArray = [
+    'one', 'two', 'three'
+  ];
 
   var addToDeck = function(name){
     deckArray.push(name);
     console.log(deckArray);
   };
 
+  var addToDB = function(name){
+    console.log('entered addToDB function & name is', name);
+    return $http({
+      method: 'POST',
+      url: '/saveDeck',
+      data: {
+          'deckName': name,
+          'deckArray': deckArray
+    }
+  })
+    .then(function(resp){
+      console.log("post successful");
+      return resp;
+    });
+  };
+
+  var getFromDB = function(name){
+
+  };
+
   return {
     addToDeck: addToDeck,
-    deckArray: deckArray
+    deckArray: deckArray,
+    addToDB: addToDB
   };
 });
