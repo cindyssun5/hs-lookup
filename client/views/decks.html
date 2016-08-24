@@ -1,0 +1,53 @@
+<div class="centered">
+    <center>
+        <table>
+            <th>
+                <table class="table table-striped" style="float:left">
+                    <col width="200">
+                    <th>
+                        Saved decks
+                    </th>
+                    <tr ng-repeat="blah in blah">
+                        <td>
+                            Deck 1
+                        </td>
+                    </tr>
+                </table>
+
+                <table class="table table-striped" style="float: left">
+                    <col width="200">
+                    <th>
+                        blah deck
+                    </th>
+                    <tr ng-repeat="blah in blah">
+                        <td>
+                            name
+                        </td>
+                    </tr>
+                </table>
+                <table style="float: left">
+                    <col width="20">
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                </table>
+
+                <table class="table table-striped" style="float: left">
+                    <col width="200">
+                    <th>
+                        Current Temp Deck
+                    </th>
+                    <tbody ng-repeat="name in deck track by $index">
+                        <tr>
+                            <td>
+                                {{name}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </th>
+        </table>
+    </center>
+</div>

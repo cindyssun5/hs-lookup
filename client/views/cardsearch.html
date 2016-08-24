@@ -53,6 +53,9 @@
                 <br/>
                 <center>
                     <button ng-click="toggle = !toggle" class="btn btn-default">{{ toggle == true ? 'See Gold Card' : 'See Regular Card' }}</button>
+                    <br/>
+                    <br/>
+                    <button ng-click="addToDeck(card.name)" class="btn btn-default">Add to Temp Deck</button>
                 </center>
             </td>
             <td>
@@ -67,5 +70,4 @@
             </td>
         </tr>
     </table>
-</div>
 </div>

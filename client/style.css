@@ -1,3 +1,7 @@
 table {
     width: auto !important;
 }
+.centered {
+    margin: 0 auto !important;
+    float: none !important;
+}

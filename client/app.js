@@ -14,15 +14,19 @@ angular.module("hs", ['ngRoute'])
       templateUrl: 'client/views/othersearch.html',
       controller: 'otherSearch'
     })
+    .when('/decks', {
+      templateUrl: 'client/views/decks.html',
+      controller: 'decks'
+    });
 })
 
 .filter('startFrom', function() {
   return function(input, start) {
     return input.slice(start);
-  }
+  };
 })
 
-.controller("cardSearch", function($scope, CardDB) {
+.controller("cardSearch", function($scope, CardDB, Deck) {
   $scope.title = 'Hearthstone Lookup';
 
   $scope.toggle = true;
@@ -39,9 +43,13 @@ angular.module("hs", ['ngRoute'])
       });
   };
 
+  $scope.addToDeck = function(name){
+    Deck.addToDeck(name);
+  };
+
 })
 
-.controller("otherSearch", function($scope, CardDB) {
+.controller("otherSearch", function($scope, CardDB, Deck) {
   $scope.cardsInfo = {};
 
   $scope.toggle = true;
@@ -77,6 +85,19 @@ angular.module("hs", ['ngRoute'])
         console.error(err);
       });
   };
+
+  $scope.addToDeck = function(name){
+    Deck.addToDeck(name);
+  };
+
+})
+
+.controller("decks", function($scope, Deck){
+
+  $scope.$watch('Deck.deckArray', function(){
+    console.log($scope.deck, "scope.deck")
+    $scope.deck = Deck.deckArray;
+  });
 
 })
 
@@ -121,4 +142,18 @@ angular.module("hs", ['ngRoute'])
     getCardsByClass: getCardsByClass
   };
 
+})
+
+.factory('Deck', function($http){
+  var deckArray = [];
+
+  var addToDeck = function(name){
+    deckArray.push(name);
+    console.log(deckArray);
+  };
+
+  return {
+    addToDeck: addToDeck,
+    deckArray: deckArray
+  };
 });
